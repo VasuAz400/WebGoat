@@ -28,7 +28,8 @@ public class UserValidator implements Validator {
       errors.rejectValue("username", "username.duplicate");
     }
 
-    if (!userForm.getMatchingPassword().equals(userForm.getPassword())) {
+    if (userForm.getMatchingPassword() == null
+        || !userForm.getMatchingPassword().equals(userForm.getPassword())) {
       errors.rejectValue("matchingPassword", "password.diff");
     }
   }
