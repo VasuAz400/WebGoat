@@ -40,7 +40,9 @@ public class RegistrationController {
       HttpServletRequest request,
       HttpServletResponse response)
       throws ServletException {
-    userValidator.validate(userForm, bindingResult);
+    if (!bindingResult.hasErrors()) {
+      userValidator.validate(userForm, bindingResult);
+    }
 
     if (bindingResult.hasErrors()) {
       return "registration";
